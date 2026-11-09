@@ -1,0 +1,22 @@
+{
+  "Lakeshore General": {
+    "rows": 2600,
+    "base_rate": 0.364
+  },
+  "St. Brigid": {
+    "rows": 1400,
+    "base_rate": 0.409
+  },
+  "Riverbend": {
+    "rows": 900,
+    "base_rate": 0.48
+  },
+  "Pinecrest Rural": {
+    "rows": 90,
+    "base_rate": 0.289
+  },
+  "Harbor Children's and Adults": {
+    "rows": 700,
+    "base_rate": 0.39
+  }
+}

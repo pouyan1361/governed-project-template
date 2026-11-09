@@ -1,0 +1,26 @@
+{
+  "Bellevue": {
+    "rows": 2600,
+    "base_rate": 0.259
+  },
+  "Bend": {
+    "rows": 1300,
+    "base_rate": 0.299
+  },
+  "Portland Pearl": {
+    "rows": 1800,
+    "base_rate": 0.324
+  },
+  "Tahoe City": {
+    "rows": 1100,
+    "base_rate": 0.267
+  },
+  "Spokane": {
+    "rows": 900,
+    "base_rate": 0.283
+  },
+  "Astoria (new)": {
+    "rows": 110,
+    "base_rate": 0.255
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "Cascade First": {
+    "rows": 2400,
+    "base_rate": 0.233
+  },
+  "Willamette Savings": {
+    "rows": 1200,
+    "base_rate": 0.309
+  },
+  "High Desert Bank": {
+    "rows": 800,
+    "base_rate": 0.282
+  },
+  "Coast Range Credit": {
+    "rows": 70,
+    "base_rate": 0.3
+  },
+  "Metro Pacific": {
+    "rows": 1500,
+    "base_rate": 0.219
+  }
+}

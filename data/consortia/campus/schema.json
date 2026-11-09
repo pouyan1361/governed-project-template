@@ -1,0 +1,155 @@
+{
+  "title": "Nazarian Advising Consortium (4 academic departments)",
+  "unit": "one student-course enrollment",
+  "id_column": "enrollment_id",
+  "label": "failed_course",
+  "label_meaning": "1 if the student earned below a C or withdrew after the drop deadline",
+  "segments": [
+    "course_level",
+    "modality"
+  ],
+  "features": [
+    {
+      "name": "prior_gpa",
+      "type": "float",
+      "mean": 3.0,
+      "sd": 0.5
+    },
+    {
+      "name": "units_this_term",
+      "type": "int",
+      "mean": 13,
+      "sd": 3
+    },
+    {
+      "name": "hours_worked_per_week",
+      "type": "int",
+      "mean": 15,
+      "sd": 12
+    },
+    {
+      "name": "lms_logins_first_3_weeks",
+      "type": "int",
+      "mean": 22,
+      "sd": 12
+    },
+    {
+      "name": "assignments_missed_first_month",
+      "type": "int",
+      "mean": 1.2,
+      "sd": 1.5
+    },
+    {
+      "name": "first_generation",
+      "type": "binary",
+      "mean": 0.45,
+      "sd": 0.5
+    },
+    {
+      "name": "transfer_student",
+      "type": "binary",
+      "mean": 0.35,
+      "sd": 0.48
+    },
+    {
+      "name": "commute_minutes",
+      "type": "int",
+      "mean": 35,
+      "sd": 25
+    },
+    {
+      "name": "prereq_grade_points",
+      "type": "float",
+      "mean": 2.8,
+      "sd": 0.7
+    },
+    {
+      "name": "met_advisor_this_term",
+      "type": "binary",
+      "mean": 0.4,
+      "sd": 0.49
+    },
+    {
+      "name": "financial_hold",
+      "type": "binary",
+      "mean": 0.1,
+      "sd": 0.3
+    },
+    {
+      "name": "repeat_attempt",
+      "type": "binary",
+      "mean": 0.12,
+      "sd": 0.33
+    }
+  ],
+  "members": [
+    {
+      "name": "Accounting",
+      "file": "accounting.csv",
+      "code": "ACC"
+    },
+    {
+      "name": "Business Analytics",
+      "file": "analytics.csv",
+      "code": "BA"
+    },
+    {
+      "name": "Marketing",
+      "file": "marketing.csv",
+      "code": "MKT"
+    },
+    {
+      "name": "Real Estate",
+      "file": "real_estate.csv",
+      "code": "RE"
+    }
+  ],
+  "neutral_eval": "neutral_eval.csv",
+  "eval_per_member": 400,
+  "intended_use": "Prioritize advising outreach and tutoring referrals in the first month.",
+  "prohibited_uses": "Admissions, financial aid or grading decisions, sharing records across departments, labeling students to instructors.",
+  "actions": [
+    {
+      "name": "send_advising_outreach",
+      "kind": "approval",
+      "note": "send_advising_outreach (approval required)"
+    },
+    {
+      "name": "refer_to_tutoring",
+      "kind": "logged",
+      "note": "refer_to_tutoring (logged)"
+    },
+    {
+      "name": "notify_instructor",
+      "kind": "approval",
+      "note": "notify_instructor (approval required)"
+    },
+    {
+      "name": "drop_student_from_course",
+      "kind": "forbidden",
+      "note": "drop_student_from_course (forbidden for any agent)"
+    }
+  ],
+  "questions": [
+    {
+      "lens": "Descriptive",
+      "question": "Where are the failures: which courses, levels and modalities in each department?"
+    },
+    {
+      "lens": "Diagnostic",
+      "question": "Why did Marketing's failure rate rise this year, and is it the students or the gateway course?"
+    },
+    {
+      "lens": "Predictive",
+      "question": "Which enrolled students are at risk by week four, and does Real Estate gain from the federation?"
+    },
+    {
+      "lens": "Prescriptive",
+      "question": "Whom should advisors contact this week, and when must a human approve the outreach?"
+    },
+    {
+      "lens": "Cross-lens",
+      "question": "Working hours predict failure everywhere except Real Estate. What does the charter owe that department?"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "title": "Granite MSSP Alert Triage Consortium (4 enterprise tenants)",
+  "unit": "one security alert",
+  "id_column": "alert_id",
+  "label": "true_incident",
+  "label_meaning": "1 if an analyst confirmed the alert as a real incident",
+  "segments": [
+    "alert_source",
+    "asset_tier"
+  ],
+  "features": [
+    {
+      "name": "severity_score",
+      "type": "int",
+      "mean": 55,
+      "sd": 20
+    },
+    {
+      "name": "alerts_same_host_24h",
+      "type": "int",
+      "mean": 3,
+      "sd": 4
+    },
+    {
+      "name": "rare_process",
+      "type": "binary",
+      "mean": 0.2,
+      "sd": 0.4
+    },
+    {
+      "name": "off_hours",
+      "type": "binary",
+      "mean": 0.3,
+      "sd": 0.46
+    },
+    {
+      "name": "external_ip_reputation",
+      "type": "int",
+      "mean": 50,
+      "sd": 30
+    },
+    {
+      "name": "privileged_account",
+      "type": "binary",
+      "mean": 0.15,
+      "sd": 0.36
+    },
+    {
+      "name": "bytes_out_mb",
+      "type": "int",
+      "mean": 40,
+      "sd": 80
+    },
+    {
+      "name": "failed_logins_1h",
+      "type": "int",
+      "mean": 2,
+      "sd": 4
+    },
+    {
+      "name": "known_benign_signature",
+      "type": "binary",
+      "mean": 0.35,
+      "sd": 0.48
+    },
+    {
+      "name": "patch_age_days",
+      "type": "int",
+      "mean": 45,
+      "sd": 40
+    },
+    {
+      "name": "user_reported",
+      "type": "binary",
+      "mean": 0.1,
+      "sd": 0.3
+    },
+    {
+      "name": "geo_mismatch",
+      "type": "binary",
+      "mean": 0.12,
+      "sd": 0.33
+    }
+  ],
+  "members": [
+    {
+      "name": "Orion Logistics",
+      "file": "orion.csv",
+      "code": "ORI"
+    },
+    {
+      "name": "Bluefin Health",
+      "file": "bluefin.csv",
+      "code": "BLU"
+    },
+    {
+      "name": "Kestrel Capital",
+      "file": "kestrel_capital.csv",
+      "code": "KES"
+    },
+    {
+      "name": "Summit Municipal",
+      "file": "summit.csv",
+      "code": "SUM"
+    }
+  ],
+  "neutral_eval": "neutral_eval.csv",
+  "eval_per_member": 400,
+  "intended_use": "Rank alerts for analysts and recommend containment steps.",
+  "prohibited_uses": "Disabling accounts or wiping hosts automatically, sharing one tenant's indicators with another without consent, HR action against users.",
+  "actions": [
+    {
+      "name": "escalate_to_analyst",
+      "kind": "logged",
+      "note": "escalate_to_analyst (logged)"
+    },
+    {
+      "name": "isolate_host",
+      "kind": "approval",
+      "note": "isolate_host (approval required)"
+    },
+    {
+      "name": "block_external_ip",
+      "kind": "approval",
+      "note": "block_external_ip (approval required)"
+    },
+    {
+      "name": "disable_user_account",
+      "kind": "forbidden",
+      "note": "disable_user_account (forbidden for any agent)"
+    }
+  ],
+  "questions": [
+    {
+      "lens": "Descriptive",
+      "question": "What is each tenant's alert volume, source mix and true-incident rate by month?"
+    },
+    {
+      "lens": "Diagnostic",
+      "question": "Why is Kestrel Capital's incident rate up: more attacks, or noisier sensors?"
+    },
+    {
+      "lens": "Predictive",
+      "question": "Which of tonight's open alerts are true incidents, and does Summit gain from the federation?"
+    },
+    {
+      "lens": "Prescriptive",
+      "question": "Which hosts should be isolated now, and who approves that at 3 AM?"
+    },
+    {
+      "lens": "Cross-lens",
+      "question": "Off-hours activity is a signal everywhere except Summit. Alert text is attacker-controlled: what does that mean for your agent?"
+    }
+  ]
+}

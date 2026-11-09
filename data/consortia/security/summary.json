@@ -1,0 +1,18 @@
+{
+  "Orion Logistics": {
+    "rows": 3200,
+    "base_rate": 0.252
+  },
+  "Bluefin Health": {
+    "rows": 1400,
+    "base_rate": 0.271
+  },
+  "Kestrel Capital": {
+    "rows": 1000,
+    "base_rate": 0.321
+  },
+  "Summit Municipal": {
+    "rows": 150,
+    "base_rate": 0.253
+  }
+}

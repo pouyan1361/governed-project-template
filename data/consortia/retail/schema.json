@@ -1,0 +1,165 @@
+{
+  "title": "Pacific Peak Outdoor Stores Replenishment Consortium (6 franchise stores)",
+  "unit": "one SKU-week at one store",
+  "id_column": "sku_week_id",
+  "label": "stockout_next_week",
+  "label_meaning": "1 if the SKU ran out of stock at that store in the following week",
+  "segments": [
+    "category",
+    "price_tier"
+  ],
+  "features": [
+    {
+      "name": "units_sold_last_4w",
+      "type": "int",
+      "mean": 24,
+      "sd": 18
+    },
+    {
+      "name": "on_hand_units",
+      "type": "int",
+      "mean": 30,
+      "sd": 20
+    },
+    {
+      "name": "lead_time_days",
+      "type": "int",
+      "mean": 9,
+      "sd": 5
+    },
+    {
+      "name": "promo_next_week",
+      "type": "binary",
+      "mean": 0.25,
+      "sd": 0.43
+    },
+    {
+      "name": "weeks_since_last_order",
+      "type": "int",
+      "mean": 2.5,
+      "sd": 1.8
+    },
+    {
+      "name": "supplier_fill_rate",
+      "type": "float",
+      "mean": 0.92,
+      "sd": 0.07
+    },
+    {
+      "name": "local_event_next_week",
+      "type": "binary",
+      "mean": 0.15,
+      "sd": 0.36
+    },
+    {
+      "name": "price",
+      "type": "int",
+      "mean": 85,
+      "sd": 60
+    },
+    {
+      "name": "days_of_rain_forecast",
+      "type": "int",
+      "mean": 2,
+      "sd": 2
+    },
+    {
+      "name": "online_orders_pickup",
+      "type": "int",
+      "mean": 5,
+      "sd": 5
+    },
+    {
+      "name": "shelf_facings",
+      "type": "int",
+      "mean": 3,
+      "sd": 1.5
+    },
+    {
+      "name": "new_item",
+      "type": "binary",
+      "mean": 0.1,
+      "sd": 0.3
+    }
+  ],
+  "members": [
+    {
+      "name": "Bellevue",
+      "file": "bellevue.csv",
+      "code": "BEL"
+    },
+    {
+      "name": "Bend",
+      "file": "bend.csv",
+      "code": "BND"
+    },
+    {
+      "name": "Portland Pearl",
+      "file": "portland.csv",
+      "code": "PDX"
+    },
+    {
+      "name": "Tahoe City",
+      "file": "tahoe.csv",
+      "code": "TAH"
+    },
+    {
+      "name": "Spokane",
+      "file": "spokane.csv",
+      "code": "SPK"
+    },
+    {
+      "name": "Astoria (new)",
+      "file": "astoria.csv",
+      "code": "AST"
+    }
+  ],
+  "neutral_eval": "neutral_eval.csv",
+  "eval_per_member": 400,
+  "intended_use": "Prioritize replenishment orders and promo planning per store.",
+  "prohibited_uses": "Sharing one store's sales with another store, pricing coordination between stores, staffing decisions.",
+  "actions": [
+    {
+      "name": "place_reorder",
+      "kind": "approval",
+      "note": "place_reorder (approval required above a dollar limit)"
+    },
+    {
+      "name": "transfer_stock_between_stores",
+      "kind": "approval",
+      "note": "transfer_stock_between_stores (approval required by both stores)"
+    },
+    {
+      "name": "flag_for_buyer",
+      "kind": "logged",
+      "note": "flag_for_buyer (logged)"
+    },
+    {
+      "name": "change_price",
+      "kind": "forbidden",
+      "note": "change_price (forbidden for any agent)"
+    }
+  ],
+  "questions": [
+    {
+      "lens": "Descriptive",
+      "question": "Which categories and tiers stock out most, store by store, and in which months?"
+    },
+    {
+      "lens": "Diagnostic",
+      "question": "Why does Portland stock out more than Bellevue on the same SKUs: demand, deliveries or ordering habits?"
+    },
+    {
+      "lens": "Predictive",
+      "question": "Which SKUs will stock out next week at Astoria, and how much does the new store gain from the federation?"
+    },
+    {
+      "lens": "Prescriptive",
+      "question": "What should each store reorder this week, and which orders need the owner's approval?"
+    },
+    {
+      "lens": "Cross-lens",
+      "question": "Rain predicts stockouts at Tahoe but not elsewhere. Should Tahoe fine-tune or leave?"
+    }
+  ]
+}

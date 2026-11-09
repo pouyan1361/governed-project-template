@@ -1,0 +1,18 @@
+{
+  "Accounting": {
+    "rows": 2200,
+    "base_rate": 0.295
+  },
+  "Business Analytics": {
+    "rows": 900,
+    "base_rate": 0.303
+  },
+  "Marketing": {
+    "rows": 1300,
+    "base_rate": 0.305
+  },
+  "Real Estate": {
+    "rows": 140,
+    "base_rate": 0.221
+  }
+}

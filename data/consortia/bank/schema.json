@@ -1,0 +1,160 @@
+{
+  "title": "Cascade Community Banks Credit Consortium (5 branches)",
+  "unit": "one small-business loan",
+  "id_column": "loan_id",
+  "label": "default_12m",
+  "label_meaning": "1 if the loan went 90 or more days delinquent within 12 months",
+  "segments": [
+    "industry",
+    "product"
+  ],
+  "features": [
+    {
+      "name": "loan_amount",
+      "type": "int",
+      "mean": 85000,
+      "sd": 60000
+    },
+    {
+      "name": "debt_service_coverage",
+      "type": "float",
+      "mean": 1.4,
+      "sd": 0.5
+    },
+    {
+      "name": "years_in_business",
+      "type": "int",
+      "mean": 7,
+      "sd": 6
+    },
+    {
+      "name": "owner_credit_score",
+      "type": "int",
+      "mean": 690,
+      "sd": 60
+    },
+    {
+      "name": "collateral_ratio",
+      "type": "float",
+      "mean": 0.9,
+      "sd": 0.4
+    },
+    {
+      "name": "revenue_growth_pct",
+      "type": "float",
+      "mean": 5,
+      "sd": 15
+    },
+    {
+      "name": "months_cash_runway",
+      "type": "int",
+      "mean": 4,
+      "sd": 3
+    },
+    {
+      "name": "prior_delinquencies",
+      "type": "int",
+      "mean": 0.4,
+      "sd": 0.8
+    },
+    {
+      "name": "employees",
+      "type": "int",
+      "mean": 9,
+      "sd": 8
+    },
+    {
+      "name": "deposits_with_bank",
+      "type": "binary",
+      "mean": 0.6,
+      "sd": 0.49
+    },
+    {
+      "name": "seasonal_business",
+      "type": "binary",
+      "mean": 0.3,
+      "sd": 0.46
+    },
+    {
+      "name": "variable_rate",
+      "type": "binary",
+      "mean": 0.4,
+      "sd": 0.49
+    }
+  ],
+  "members": [
+    {
+      "name": "Cascade First",
+      "file": "cascade_first.csv",
+      "code": "CF"
+    },
+    {
+      "name": "Willamette Savings",
+      "file": "willamette.csv",
+      "code": "WS"
+    },
+    {
+      "name": "High Desert Bank",
+      "file": "high_desert.csv",
+      "code": "HD"
+    },
+    {
+      "name": "Coast Range Credit",
+      "file": "coast_range.csv",
+      "code": "CR"
+    },
+    {
+      "name": "Metro Pacific",
+      "file": "metro_pacific.csv",
+      "code": "MP"
+    }
+  ],
+  "neutral_eval": "neutral_eval.csv",
+  "eval_per_member": 400,
+  "intended_use": "Flag applications for a second look and set monitoring intensity on existing loans.",
+  "prohibited_uses": "Automatic decline, pricing, any use of protected characteristics, marketing.",
+  "actions": [
+    {
+      "name": "escalate_to_credit_committee",
+      "kind": "approval",
+      "note": "escalate_to_credit_committee (approval required)"
+    },
+    {
+      "name": "increase_monitoring",
+      "kind": "logged",
+      "note": "increase_monitoring (logged)"
+    },
+    {
+      "name": "offer_restructure",
+      "kind": "approval",
+      "note": "offer_restructure (approval required)"
+    },
+    {
+      "name": "decline_application",
+      "kind": "forbidden",
+      "note": "decline_application (forbidden for any agent)"
+    }
+  ],
+  "questions": [
+    {
+      "lens": "Descriptive",
+      "question": "Which industries and products carry the alliance's defaults, bank by bank?"
+    },
+    {
+      "lens": "Diagnostic",
+      "question": "Why is High Desert's default rate up this year: borrowers, the drought, or underwriting?"
+    },
+    {
+      "lens": "Predictive",
+      "question": "Which active loans are likely to default in 12 months, and how much does Coast Range gain from the federation?"
+    },
+    {
+      "lens": "Prescriptive",
+      "question": "Which borrowers should be offered a restructure before they default, and who approves that?"
+    },
+    {
+      "lens": "Cross-lens",
+      "question": "Seasonal businesses look risky everywhere except Metro Pacific. One model or two?"
+    }
+  ]
+}

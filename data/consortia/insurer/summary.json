@@ -1,0 +1,18 @@
+{
+  "West (Sacramento)": {
+    "rows": 3000,
+    "base_rate": 0.177
+  },
+  "Mountain (Denver)": {
+    "rows": 1500,
+    "base_rate": 0.234
+  },
+  "South (Phoenix)": {
+    "rows": 1100,
+    "base_rate": 0.267
+  },
+  "Coastal (San Diego)": {
+    "rows": 160,
+    "base_rate": 0.169
+  }
+}

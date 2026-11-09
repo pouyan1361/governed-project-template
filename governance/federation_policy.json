@@ -1,0 +1,23 @@
+{
+  "policy_name": "Lakeshore Readmission Consortium Charter",
+  "policy_version": "1.0",
+  "coordinator": "Lakeshore General Health IT (rotates annually under the charter)",
+  "approved_by": "Consortium Steering Committee (one seat per member, one patient representative)",
+  "evaluation_set": "neutral_eval.csv: 400 consented, de-identified rows from each member's population, tagged by member, held by the coordinator for evaluation only",
+
+  "members": ["Lakeshore General", "St. Brigid", "Riverbend", "Pinecrest Rural", "Harbor Children's and Adults"],
+  "min_clients_per_round": 3,
+  "rounds": 15,
+  "max_local_epochs": 5,
+
+  "aggregation": "mean",
+  "max_update_norm": 2.0,
+  "reject_update_norm_above": null,
+  "secure_aggregation": true,
+  "dp_noise_multiplier": 0.3,
+
+  "min_global_accuracy": 0.68,
+  "min_member_accuracy": 0.62,
+  "max_member_accuracy_gap": 0.12,
+  "high_risk_threshold": 0.5
+}

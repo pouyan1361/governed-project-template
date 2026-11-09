@@ -1,0 +1,155 @@
+{
+  "title": "Sierra Mutual Claims Fraud Consortium (4 regional offices)",
+  "unit": "one auto claim",
+  "id_column": "claim_id",
+  "label": "fraud_flag",
+  "label_meaning": "1 if the claim was confirmed fraudulent after investigation",
+  "segments": [
+    "claim_type",
+    "channel"
+  ],
+  "features": [
+    {
+      "name": "claim_amount",
+      "type": "int",
+      "mean": 6800,
+      "sd": 5200
+    },
+    {
+      "name": "days_to_report",
+      "type": "int",
+      "mean": 4,
+      "sd": 6
+    },
+    {
+      "name": "prior_claims_3y",
+      "type": "int",
+      "mean": 0.9,
+      "sd": 1.1
+    },
+    {
+      "name": "policy_tenure_months",
+      "type": "int",
+      "mean": 38,
+      "sd": 30
+    },
+    {
+      "name": "vehicle_age_years",
+      "type": "int",
+      "mean": 7,
+      "sd": 4
+    },
+    {
+      "name": "police_report",
+      "type": "binary",
+      "mean": 0.55,
+      "sd": 0.5
+    },
+    {
+      "name": "witnesses",
+      "type": "int",
+      "mean": 0.6,
+      "sd": 0.9
+    },
+    {
+      "name": "injury_claimed",
+      "type": "binary",
+      "mean": 0.25,
+      "sd": 0.43
+    },
+    {
+      "name": "repair_shop_preferred",
+      "type": "binary",
+      "mean": 0.5,
+      "sd": 0.5
+    },
+    {
+      "name": "claimant_age",
+      "type": "int",
+      "mean": 44,
+      "sd": 15
+    },
+    {
+      "name": "late_night_incident",
+      "type": "binary",
+      "mean": 0.2,
+      "sd": 0.4
+    },
+    {
+      "name": "photos_submitted",
+      "type": "int",
+      "mean": 4,
+      "sd": 3
+    }
+  ],
+  "members": [
+    {
+      "name": "West (Sacramento)",
+      "file": "west.csv",
+      "code": "W"
+    },
+    {
+      "name": "Mountain (Denver)",
+      "file": "mountain.csv",
+      "code": "M"
+    },
+    {
+      "name": "South (Phoenix)",
+      "file": "south.csv",
+      "code": "S"
+    },
+    {
+      "name": "Coastal (San Diego)",
+      "file": "coastal.csv",
+      "code": "C"
+    }
+  ],
+  "neutral_eval": "neutral_eval.csv",
+  "eval_per_member": 400,
+  "intended_use": "Route suspicious claims to a human investigator; speed up clearly legitimate claims.",
+  "prohibited_uses": "Automatic denial, pricing or renewal decisions, sharing claimant data across offices.",
+  "actions": [
+    {
+      "name": "hold_claim_for_review",
+      "kind": "approval",
+      "note": "hold_claim_for_review (approval required)"
+    },
+    {
+      "name": "fast_track_payment",
+      "kind": "approval",
+      "note": "fast_track_payment (approval required above a limit)"
+    },
+    {
+      "name": "request_documents",
+      "kind": "logged",
+      "note": "request_documents (logged)"
+    },
+    {
+      "name": "deny_claim",
+      "kind": "forbidden",
+      "note": "deny_claim (forbidden for any agent)"
+    }
+  ],
+  "questions": [
+    {
+      "lens": "Descriptive",
+      "question": "How did claim volume, severity and fraud rate move by region and claim type over the year?"
+    },
+    {
+      "lens": "Diagnostic",
+      "question": "Why does South's fraud rate exceed West's, and is it the claims or the claimants?"
+    },
+    {
+      "lens": "Predictive",
+      "question": "Which open claims this week are likely fraudulent, and how much does Coastal gain from the federation?"
+    },
+    {
+      "lens": "Prescriptive",
+      "question": "Which claims should be held for review today, and which should be fast tracked?"
+    },
+    {
+      "lens": "Cross-lens",
+      "question": "Late-night incidents look suspicious everywhere except Coastal. What should the charter say about Coastal?"
+    }
+  ]
+}

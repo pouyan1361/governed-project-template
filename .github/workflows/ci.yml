@@ -1,0 +1,24 @@
+name: governed-agent-team CI
+on: [push, pull_request]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m pytest -q tests/
+      - name: Federation charter pre-check and training (writes models/federated_model.json)
+        run: python run_federation.py
+      - name: Agent policy pre-check and evaluation gate
+        run: python evaluation/run_eval.py --threshold 0.85
+      - name: Keep the evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence
+          path: |
+            artifacts/
+            models/federated_model.json

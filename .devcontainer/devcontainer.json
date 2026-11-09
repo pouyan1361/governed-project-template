@@ -1,0 +1,12 @@
+{
+  "name": "governed-project-template",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "hostRequirements": { "cpus": 2 },
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -r requirements.txt && echo 'Setup complete. Run: python run_federation.py --baselines'",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"],
+      "settings": { "python.defaultInterpreterPath": "/usr/local/bin/python" }
+    }
+  }
+}

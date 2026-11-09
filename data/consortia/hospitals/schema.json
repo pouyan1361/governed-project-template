@@ -1,0 +1,172 @@
+{
+  "title": "Lakeshore Readmission Consortium (5 hospitals)",
+  "unit": "one discharge",
+  "id_column": "discharge_id",
+  "label": "readmitted_30d",
+  "label_meaning": "1 if the patient was readmitted within 30 days of discharge",
+  "segments": [
+    "ward",
+    "payer"
+  ],
+  "features": [
+    {
+      "name": "age",
+      "type": "int",
+      "mean": 68,
+      "sd": 14
+    },
+    {
+      "name": "prior_admissions_12m",
+      "type": "int",
+      "mean": 1.1,
+      "sd": 1.3
+    },
+    {
+      "name": "length_of_stay_days",
+      "type": "int",
+      "mean": 4.8,
+      "sd": 3.1
+    },
+    {
+      "name": "num_medications",
+      "type": "int",
+      "mean": 9,
+      "sd": 4
+    },
+    {
+      "name": "comorbidity_index",
+      "type": "int",
+      "mean": 2.4,
+      "sd": 1.8
+    },
+    {
+      "name": "er_visits_6m",
+      "type": "int",
+      "mean": 0.9,
+      "sd": 1.2
+    },
+    {
+      "name": "hemoglobin",
+      "type": "float",
+      "mean": 12.4,
+      "sd": 1.8
+    },
+    {
+      "name": "creatinine",
+      "type": "float",
+      "mean": 1.2,
+      "sd": 0.6
+    },
+    {
+      "name": "lives_alone",
+      "type": "binary",
+      "mean": 0.3,
+      "sd": 0.46
+    },
+    {
+      "name": "discharged_to_facility",
+      "type": "binary",
+      "mean": 0.2,
+      "sd": 0.4
+    },
+    {
+      "name": "followup_scheduled",
+      "type": "binary",
+      "mean": 0.6,
+      "sd": 0.49
+    },
+    {
+      "name": "mobility_score",
+      "type": "int",
+      "mean": 6,
+      "sd": 2.5
+    },
+    {
+      "name": "oxygen_saturation",
+      "type": "int",
+      "mean": 95,
+      "sd": 3
+    },
+    {
+      "name": "pain_score",
+      "type": "int",
+      "mean": 3,
+      "sd": 2.5
+    }
+  ],
+  "members": [
+    {
+      "name": "Lakeshore General",
+      "file": "lakeshore_general.csv",
+      "code": "LG"
+    },
+    {
+      "name": "St. Brigid",
+      "file": "st_brigid.csv",
+      "code": "SB"
+    },
+    {
+      "name": "Riverbend",
+      "file": "riverbend.csv",
+      "code": "RB"
+    },
+    {
+      "name": "Pinecrest Rural",
+      "file": "pinecrest_rural.csv",
+      "code": "PR"
+    },
+    {
+      "name": "Harbor Children's and Adults",
+      "file": "harbor.csv",
+      "code": "HC"
+    }
+  ],
+  "neutral_eval": "neutral_eval.csv",
+  "eval_per_member": 400,
+  "intended_use": "Prioritize nurse follow-up calls and discharge planning resources.",
+  "prohibited_uses": "Coverage decisions, pricing, denying or delaying a discharge, any use by a payer.",
+  "actions": [
+    {
+      "name": "schedule_followup_call",
+      "kind": "approval",
+      "note": "schedule_followup_call (approval required)"
+    },
+    {
+      "name": "request_home_visit",
+      "kind": "approval",
+      "note": "request_home_visit (approval required)"
+    },
+    {
+      "name": "flag_chart_for_pharmacist",
+      "kind": "logged",
+      "note": "flag_chart_for_pharmacist (logged)"
+    },
+    {
+      "name": "change_discharge_decision",
+      "kind": "forbidden",
+      "note": "change_discharge_decision (forbidden for any agent)"
+    }
+  ],
+  "questions": [
+    {
+      "lens": "Descriptive",
+      "question": "Which ward and payer mix drives each hospital's readmissions this quarter?"
+    },
+    {
+      "lens": "Diagnostic",
+      "question": "Why is St. Brigid's readmission rate higher than Lakeshore General's at the same age and comorbidity?"
+    },
+    {
+      "lens": "Predictive",
+      "question": "Which of this week's discharges at Pinecrest are high risk, and does the federated model beat Pinecrest's own 90-row model?"
+    },
+    {
+      "lens": "Prescriptive",
+      "question": "Whom should the nurses call first on Monday, and which calls need a clinician's approval?"
+    },
+    {
+      "lens": "Cross-lens",
+      "question": "Harbor's elderly patients who live alone look safer than elsewhere. Is that real, and should Harbor get its own model?"
+    }
+  ]
+}
