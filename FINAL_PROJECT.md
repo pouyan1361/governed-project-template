@@ -64,7 +64,7 @@ The template runs end to end before you change anything: the loop, the policy, t
 8. A five-minute demo video and a live demo of three questions: one that crosses lenses, one that ends in an approved action, one that ends in a refusal.
 
 
-## 4. Governance package
+## 4. Governance package (the appendices of the final report)
 
 1. Model card for the federated model (training members and sizes, charter, accuracy overall and per member, skew results, intended and prohibited uses).
 2. Agent card for the system (purpose, allowed, gated and forbidden actions, scope and budgets, the model it relies on, evidence summary, open questions). Start from the Lab 4 generator.
@@ -83,9 +83,9 @@ The template runs end to end before you change anything: the loop, the policy, t
 | Nov 23, in class | Build check-in | Team repo with the federation running (FedAvg vs centralized, one skew) and at least one specialist answering a question through the loop. Feedback, not points. | 0 |
 | Nov 30, in class | Governance checkpoint and peer review | Draft agent policy, risk register, model card and agent card, gold set draft. Demo to another team using the rubric; written peer feedback. | 4 |
 | Dec 7, in class | Presentation | 15 minutes per team: live demo of three questions, architecture, federation results, governance highlights, then questions. | 6 |
-| Dec 11, 11:59 PM | Final submission | Repository (code, CI, evaluation), demo video (5 min), governance package, individual contribution statements. | Technical 14, governance package 8, individual 4 |
+| Dec 11, 11:59 PM | Final submission | Repository (code, CI, evaluation), demo video (5 min), final report with the six governance documents as appendices (section 10), individual contribution statements. | Technical 14, final report 8, individual 4 |
 
-Technical implementation (14): federation and charter 4; coordinator and specialists 6; CI, gold set and evaluation 4. Governance package (8): the six documents in section 4, graded on specificity to your system, not on length. Individual contribution and peer evaluation (4): each student's contribution statement, the commit history, and the peer forms.
+Technical implementation (14): federation and charter 4; coordinator and specialists 6; CI, gold set and evaluation 4. Final report (8): the report in section 10 with the six documents of section 4 as appendices, graded on specificity to your system, not on length. Individual contribution and peer evaluation (4): each student's contribution statement, the commit history, and the peer forms.
 
 
 ## 6. Rubric highlights
@@ -138,7 +138,27 @@ Reviewing team, reviewed team, date, reviewer names.
 One paragraph per person in docs/contributions.md of the team repo (template provided): what you built (files and tools, by name), what you decided (a charter or policy line you argued for), what you learned, and one thing you would do differently. It is read next to git log --author, so claim what the history shows. Peer evaluation forms from Nov 30 and a short confidential peer form at the end of Dec 7 complete the individual component.
 
 
-## 10. Rules
+## 10. Final report (Dec 11)
+
+One report per team, about 10 pages plus appendices, submitted as a PDF on Canvas and committed as docs/final_report.md (or .pdf) in the repo. The report is the argument that ties the system, the evidence and the six governance documents together. It carries the 8 points previously listed as the governance package; the six documents are its appendices. Grading word: specificity. Every number must be traceable to an artifact in the repo (a gate report, an audit log line, an eval report, a CI run). A report that could have been written without running the system earns half credit.
+
+
+| Section | Length | Must contain |
+|---|---|---|
+| 1. Executive summary | half a page | The consortium, the question the system answers, the one-sentence result: what the agents can do, what they may do, what the evidence shows |
+| 2. The consortium and the questions | 1 page | Members, why they cannot pool data, sizes and base rates, the five business questions and the lens each needed |
+| 3. The federation | 2 pages | Baselines table per member (local only, FedAvg, centralized); the member differences found and how; the one difference that changed a conclusion and the charter line it produced; the privacy or defense control measured with its per-member cost; the final charter version and gate result |
+| 4. The agent team | 2 pages | Architecture (coordinator, four specialists, tools table with kinds); one real cross-lens trace from your system; the two planners compared (routes, tool counts, pass rates); what the language model did that the rule book did not, for better and for worse |
+| 5. Governance of actions | 1.5 pages | The policy file explained (allowed, approval, forbidden, scope, budgets, model floor); the approval design (what the human sees, who decides); audit log evidence with counts and two or three quoted lines; the adversarial cases and what held |
+| 6. Evaluation and pipeline | 1 page | The gold set (count, lenses, the five adversarial shapes); the threshold and why; the seeded regression with links to the red and green runs; what the pipeline would catch that a human review would not |
+| 7. Risks, privacy and monitoring | 1 page | Top five register rows with mitigations pointing into the repo; privacy analysis in brief (protected, not protected, residual risk and who accepts it); monitoring plan (who reads the log, which signals pull the agent) |
+| 8. Reflection | 1 page | What you would tell a company adopting this design: three things that worked, two that did not, one thing you would do differently; where the governance was theater and where it was real |
+| Appendices | as needed | The six governance documents (model card, agent card, risk register, privacy analysis, approval design, monitoring plan), the individual contribution statements, the three demo traces. These exist in the repo already; link or copy them |
+
+Template: docs/final_report.md in the team repo has these headings with the questions each section must answer.
+
+
+## 11. Rules
 
 - Start from the project template, github.com/pouyan1361/governed-project-template (Use this template): it runs the hospital consortium end to end with the loop, policy, audit log, coordinator, specialists with marked TODOs, gold set, evaluation gate and CI. Replacing parts with a framework (Flower, LangGraph, CrewAI) is allowed if the governance layer still does what section 3 requires.
 - AI assistants may be used for coding and drafting and must be disclosed; every team member must be able to explain every artifact in the demo and in the questions after it.
