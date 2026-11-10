@@ -41,6 +41,17 @@ Rules for the data: a member's rows never leave that member's file in your feder
 Assignment: consortia are drawn by lot at the start of the Nov 16 session; teams may trade until 7:30 PM. Read all six data cards before then, since the proposal is written for the one you draw and is due that night.
 
 
+## Getting started this week (before Nov 16)
+
+1. One team member opens github.com/pouyan1361/governed-project-template, clicks Use this template, then Create a new repository (public, or private with the instructor added), and adds every teammate under Settings, Collaborators.
+2. Everyone: on the team repo, Code, Codespaces, Create codespace on main. Wait for 'Setup complete'. If a module is missing: python -m pip install -r requirements.txt
+3. Run the template as it is, on the hospital consortium: python run_federation.py --baselines (charter pre-check, training, gate, per-member baselines, model file); python coordinator.py --list-questions; python coordinator.py --approve ask --question "Which of this month's discharges at Lakeshore General are high risk, and whom should the nurses call first? Month 11." (answer y or n at the approval prompt); python evaluation/run_eval.py; python -m pytest -q tests/
+4. Read the README (the build order), all six data cards in data/consortia, and this specification. Draft the tools table for your two most likely consortia.
+5. Have an OpenAI API key ready in a Codespaces secret or an export in the terminal; never in a file.
+
+The template runs end to end before you change anything: the loop, the policy, the approval gate, the audit log, the coordinator, four specialists with marked TODOs, the gold set, the evaluation gate and the CI workflow. After the Nov 16 draw you switch config.py to your consortium, fix the charter's member list and the policy's action names, and build from there.
+
+
 ## 3. Technical requirements
 
 1. Federated training of the predictive model across your consortium's members with FedAvg, a centralized baseline and a local-only baseline, at least one non-IID experiment, and at least one defense or privacy control exercised (clipping, robust aggregation, secure aggregation or differential privacy) with its cost measured.
@@ -101,7 +112,33 @@ Technical implementation (14): federation and charter 4; coordinator and special
 8. Repository link (the team repo, created from github.com/pouyan1361/governed-project-template with Use this template).
 
 
-## 8. Rules
+## 8. Peer review form (Nov 30)
+
+Each team reviews one other team for 15 minutes: the reviewed team runs its cross-lens question with --approve ask and its evaluation report; the reviewing team fills this form (also in the template as docs/peer_review_form.md) and gives a copy to the reviewed team and to the instructor. The quality of the review counts toward the reviewer's individual grade.
+
+
+| Rubric row | 1 | 2 | 3 | 4 | Score |
+|---|---|---|---|---|---|
+| Federation | Runs; overall accuracy only | Per-member table | Per-member table and the odd member found | Odd member found and a charter decision made from it |  |
+| Agents | One agent, no coordinator | Coordinator routes single-lens questions | Cross-lens question answered with the scripted planner | Cross-lens question answered with both planners; eight or more tools |  |
+| Governance of actions | Allow list only | Approval prompt exists | Approve and reject shown live | Approve, reject and a forbidden action refused, all in the log |  |
+| Evidence and CI | Tests only | Eval gate runs locally | Eval gate in CI, green | A red seeded run and a green run to show |  |
+| Documents | None drafted | Templates filled generically | Drafts with some of the team's numbers | Five drafts with the team's own numbers throughout |  |
+| Presentation readiness | No demo plan | Questions chosen | Rehearsed once | Three questions rehearsed, timed, with a fallback |  |
+
+The best thing about this system (one sentence):
+
+The one thing to fix before Dec 7 (one sentence):
+
+Reviewing team, reviewed team, date, reviewer names.
+
+
+## 9. Individual contribution statement (Dec 11)
+
+One paragraph per person in docs/contributions.md of the team repo (template provided): what you built (files and tools, by name), what you decided (a charter or policy line you argued for), what you learned, and one thing you would do differently. It is read next to git log --author, so claim what the history shows. Peer evaluation forms from Nov 30 and a short confidential peer form at the end of Dec 7 complete the individual component.
+
+
+## 10. Rules
 
 - Start from the project template, github.com/pouyan1361/governed-project-template (Use this template): it runs the hospital consortium end to end with the loop, policy, audit log, coordinator, specialists with marked TODOs, gold set, evaluation gate and CI. Replacing parts with a framework (Flower, LangGraph, CrewAI) is allowed if the governance layer still does what section 3 requires.
 - AI assistants may be used for coding and drafting and must be disclosed; every team member must be able to explain every artifact in the demo and in the questions after it.
